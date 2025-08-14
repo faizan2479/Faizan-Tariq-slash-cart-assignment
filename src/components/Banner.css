@@ -7,4 +7,19 @@
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .banner-image {
+    max-height: 500px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .banner-image {
+    max-height: 350px;
+  }
 }

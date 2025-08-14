@@ -26,7 +26,7 @@
 /* Custom Arrows */
 .custom-arrow {
   position: absolute;
-  top: 50%; /* center vertically */
+  top: 50%;
   transform: translateY(-50%);
   background-color: black;
   color: white;
@@ -44,11 +44,11 @@
 }
 
 .custom-prev {
-  left: -30px; /* gap from image side */
+  left: -30px;
 }
 
 .custom-next {
-  right: -30px; /* gap from image side */
+  right: -30px;
 }
 
 /* Dots customization */
@@ -63,4 +63,44 @@
 
 .slick-dots li.slick-active button:before {
   color: black;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .favorite-image {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .favorites-title {
+    font-size: 22px;
+  }
+
+  .favorite-image {
+    height: 200px;
+  }
+
+  .custom-arrow {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  .custom-prev {
+    left: -20px;
+  }
+
+  .custom-next {
+    right: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorite-image {
+    height: 180px;
+  }
+
+  .custom-arrow {
+    display: none; /* hide arrows on very small screens */
+  }
 }

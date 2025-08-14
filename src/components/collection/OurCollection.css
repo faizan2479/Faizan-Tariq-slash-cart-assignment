@@ -18,7 +18,7 @@
 
 .collection-image {
   width: 100%;
-   height: 450px !important;
+  height: 450px; /* Desktop */
   object-fit: cover;
   border-radius: 10px;
 }
@@ -55,4 +55,33 @@
 
 .custom-next {
   right: -50px;
+}
+
+/* Tablet and Mobile Adjustments */
+@media (max-width: 1024px) {
+  .collection-image {
+    height: 350px;
+  }
+  .custom-prev {
+    left: -35px;
+  }
+  .custom-next {
+    right: -35px;
+  }
+}
+
+@media (max-width: 600px) {
+  .collection-image {
+    height: auto; /* Maintain aspect ratio */
+  }
+  .custom-arrow {
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+  .custom-prev {
+    left: -20px;
+  }
+  .custom-next {
+    right: -20px;
+  }
 }

@@ -7,7 +7,7 @@
 
 /* Image container */
 .vertical-slider-container {
-  flex: 1; /* take full available space except dots column */
+  flex: 1;
   overflow: hidden;
   height: 500px;
 }
@@ -30,9 +30,9 @@
   object-fit: cover;
 }
 
-/* Dots column (completely separate from images) */
+/* Dots column */
 .vertical-dots-column {
-  width: 40px; /* fixed space for dots */
+  width: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,4 +52,37 @@
 .dot.active {
   background-color: #000;
   transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .vertical-slider-wrapper,
+  .vertical-slider-container,
+  .vertical-slide {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .vertical-slider-wrapper {
+    flex-direction: column; /* dots niche aa jayenge */
+    height: auto;
+  }
+  
+  .vertical-slider-container,
+  .vertical-slide {
+    height: 300px;
+  }
+
+  .vertical-dots-column {
+    flex-direction: row;
+    width: auto;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
 }

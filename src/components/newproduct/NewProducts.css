@@ -24,7 +24,7 @@
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
-  align-items: stretch; /* Equal height for left & right */
+  align-items: stretch;
 }
 
 /* Left section */
@@ -39,20 +39,20 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   width: 100%;
-  height: 100%; /* match right section height */
 }
 
-.image-container {
+.image-container,
+.single-image-container {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
 }
 
-.image-container img {
+.image-container img,
+.single-image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
 }
 
 /* Overlay */
@@ -78,19 +78,6 @@
 .image-container:hover .image-overlay,
 .single-image-container:hover .image-overlay {
   opacity: 1;
-}
-
-/* Single image container */
-.single-image-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.single-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* Right section */
@@ -121,10 +108,9 @@
   color: white;
 }
 
-/* Products slider should fill remaining height */
 .products-slider {
   flex: 1;
-  position: relative; /* so arrows position relative to section */
+  position: relative;
 }
 
 /* Product card */
@@ -133,10 +119,9 @@
   border-radius: 15px;
   text-align: center;
   padding: 20px;
-  display: flex !important; /* slick uses div */
+  display: flex !important;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
 }
 
 .product-image img {
@@ -195,4 +180,43 @@
 
 .custom-arrow.next {
   right: -15px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .new-products-content {
+    flex-direction: column;
+  }
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .custom-arrow.prev {
+    left: -10px;
+  }
+  .custom-arrow.next {
+    right: -10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .new-products-header h2 {
+    font-size: 1.8rem;
+  }
+  .new-products-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+  .category-nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .custom-arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
 }

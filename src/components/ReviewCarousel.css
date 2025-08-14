@@ -18,10 +18,11 @@
 
 .favorite-image {
   width: 100%;
-  height: auto; /* Full image without crop */
-  max-height: 300px; /* Optional: limit height so slider looks neat */
-  object-fit: contain; /* Maintain full image inside frame */
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
   border-radius: 10px;
+  background-color: #fff; /* optional: white background for transparent PNGs */
 }
 
 /* Custom Arrows */
@@ -64,4 +65,33 @@
 
 .slick-dots li.slick-active button:before {
   color: black;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .favorite-image {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .favorites-title {
+    font-size: 22px;
+  }
+  .favorite-image {
+    max-height: 200px;
+  }
+  .custom-arrow {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorite-image {
+    max-height: 180px;
+  }
+  .custom-arrow {
+    display: none; /* hide arrows for small screens */
+  }
 }
