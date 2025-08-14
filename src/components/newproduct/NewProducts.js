@@ -61,13 +61,13 @@ const NewProducts = () => {
       : np1;
 
   const PrevArrow = ({ onClick }) => (
-    <button className="custom-arrow prev" onClick={onClick} aria-label="Previous">
+    <button className="custom-arrow prev" onClick={onClick}>
       &lt;
     </button>
   );
 
   const NextArrow = ({ onClick }) => (
-    <button className="custom-arrow next" onClick={onClick} aria-label="Next">
+    <button className="custom-arrow next" onClick={onClick}>
       &gt;
     </button>
   );
@@ -76,40 +76,21 @@ const NewProducts = () => {
     dots: true,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2500,
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
+    rtl: false, // LTR auto-scroll
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 2,
-          arrows: true
-        }
-      },
-      {
-        breakpoint: 900,
-        settings: {
-          slidesToShow: 1,
-          arrows: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-          dots: true
-        }
-      }
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } }
     ]
   };
 
   return (
-    <section className="new-products-container">
+    <div className="new-products-container">
       <div className="new-products-header">
         <h2>New Products</h2>
         <p>Discover our premium coffee collections crafted for every taste!</p>
@@ -122,18 +103,18 @@ const NewProducts = () => {
             <div className="image-grid">
               {[np1, np2, np3, np4].map((img, index) => (
                 <div key={index} className="image-container">
-                  <img src={img} alt={`Product ${index + 1}`} loading="lazy" />
+                  <img src={img} alt={`Product ${index + 1}`} />
                   <div className="image-overlay">
-                    <img src={viewIcon} alt="View" className="view-icon" />
+                    <img src={viewIcon} alt="View" />
                   </div>
                 </div>
               ))}
             </div>
           ) : (
             <div className="single-image-container">
-              <img src={leftImage} alt="Featured Product" loading="lazy" />
+              <img src={leftImage} alt="Featured Product" />
               <div className="image-overlay">
-                <img src={viewIcon} alt="View" className="view-icon" />
+                <img src={viewIcon} alt="View" />
               </div>
             </div>
           )}
@@ -141,14 +122,12 @@ const NewProducts = () => {
 
         {/* Right Section */}
         <div className="right-content-section">
-          <div className="category-nav" role="tablist">
+          <div className="category-nav">
             {["Coffee", "Capsule", "All"].map((category) => (
               <button
                 key={category}
                 className={activeCategory === category ? "active" : ""}
                 onClick={() => setActiveCategory(category)}
-                role="tab"
-                aria-selected={activeCategory === category}
               >
                 {category}
               </button>
@@ -160,7 +139,7 @@ const NewProducts = () => {
               {filteredProducts.map((product) => (
                 <div key={product.id} className="product-card">
                   <div className="product-image">
-                    <img src={product.img} alt={product.title} loading="lazy" />
+                    <img src={product.img} alt={product.title} />
                   </div>
                   <div className="product-info">
                     <h3>{product.title}</h3>
@@ -173,7 +152,7 @@ const NewProducts = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

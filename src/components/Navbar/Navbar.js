@@ -13,68 +13,82 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleClick = (item, img) => {
-    if (activeItem?.name === item) {
-      setActiveItem(null);
-    } else {
-      setActiveItem({ name: item, image: img });
-    }
+    setActiveItem(activeItem?.name === item ? null : { name: item, image: img });
   };
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+    document.body.style.overflow = mobileMenuOpen ? 'auto' : 'hidden';
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    document.body.style.overflow = 'auto';
   };
 
   return (
     <div
       className="header-container"
-      style={{
-        backgroundImage: `url(${bgn})`,
-      }}
+      style={{ backgroundImage: `url(${bgn})` }}
     >
       {/* Mobile Menu Button */}
-      <button className="mobile-menu-button" onClick={toggleMobileMenu}>
+      <button 
+        className="mobile-menu-button" 
+        onClick={toggleMobileMenu}
+        aria-label="Menu"
+        aria-expanded={mobileMenuOpen}
+      >
         {mobileMenuOpen ? <FaTimes /> : <FaBars />}
       </button>
 
       {/* Navbar */}
-      <nav className={`navbar ${mobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+      <nav 
+        className={`navbar ${mobileMenuOpen ? 'mobile-menu-open' : ''}`}
+        aria-hidden={!mobileMenuOpen}
+      >
         {/* Left Menu */}
         <ul className="nav-left">
-          <li onClick={() => handleClick("shop", shopcris)}>
+          <li onClick={() => { handleClick("shop", shopcris); closeMobileMenu(); }}>
             Shop Christmas {activeItem?.name === "shop" ? "▲" : "▼"}
           </li>
-          <li onClick={() => handleClick("coffee", coffee)}>
+          <li onClick={() => { handleClick("coffee", coffee); closeMobileMenu(); }}>
             Coffee {activeItem?.name === "coffee" ? "▲" : "▼"}
           </li>
-          <li onClick={() => handleClick("subs", subs)}>
+          <li onClick={() => { handleClick("subs", subs); closeMobileMenu(); }}>
             Subscriptions {activeItem?.name === "subs" ? "▲" : "▼"}
           </li>
-          <li onClick={() => handleClick("accessories", accessories)}>
+          <li onClick={() => { handleClick("accessories", accessories); closeMobileMenu(); }}>
             Accessories {activeItem?.name === "accessories" ? "▲" : "▼"}
           </li>
         </ul>
 
         {/* Logo */}
-        <div className="logo">
+        <div className="logo" onClick={closeMobileMenu}>
           <h1>CLIFTON</h1>
           <p>COFFEE ROASTERS</p>
         </div>
 
         {/* Right Menu */}
         <ul className="nav-right">
-          <li>Wholesale</li>
-          <li>Education</li>
-          <li>Our Ethos</li>
-          <li><FaUser /></li>
-          <li onClick={() => handleClick("search", searchImg)}><FaSearch /></li>
-          <li><FaShoppingCart /></li>
+          <li onClick={closeMobileMenu}>Wholesale</li>
+          <li onClick={closeMobileMenu}>Education</li>
+          <li onClick={closeMobileMenu}>Our Ethos</li>
+          <li onClick={closeMobileMenu}><FaUser aria-label="Account" /></li>
+          <li onClick={() => { handleClick("search", searchImg); closeMobileMenu(); }}>
+            <FaSearch aria-label="Search" />
+          </li>
+          <li onClick={closeMobileMenu}><FaShoppingCart aria-label="Cart" /></li>
         </ul>
       </nav>
 
       {/* Display Selected Image */}
       {activeItem && (
         <div className="image-display">
-          <img src={activeItem.image} alt="Selected content" />
+          <img 
+            src={activeItem.image} 
+            alt={`Selected ${activeItem.name} content`} 
+            loading="lazy"
+          />
         </div>
       )}
     </div>

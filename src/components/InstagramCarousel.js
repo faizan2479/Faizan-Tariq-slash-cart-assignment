@@ -19,7 +19,7 @@ const InstagramCarousel = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 5, 
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -34,7 +34,9 @@ const InstagramCarousel = () => {
   return (
     <div className="insta-container">
       <h2 className="insta-title">@cliftoncoffee</h2>
-      <p className="insta-subtitle">Follow us on Instagram for the latest updates!</p>
+      <p className="insta-subtitle">
+        Follow us on Instagram for the latest updates!
+      </p>
       <Slider {...settings}>
         {images.map((img, index) => (
           <div key={index} className="insta-card">

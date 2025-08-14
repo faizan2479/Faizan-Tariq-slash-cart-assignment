@@ -1,19 +1,70 @@
+.insta-container {
+  width: 90%;
+  margin: auto;
+  padding: 40px 0;
+  text-align: center; /* ensure everything is centered */
+}
+
+.insta-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.insta-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Images */
+.insta-card {
+  padding: 5px;
+}
+
 .insta-image {
   width: 100%;
   height: 250px; /* fixed height for uniform look */
   border-radius: 10px;
   object-fit: cover; /* crop to fit */
+  display: block;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .insta-title {
+    font-size: 20px;
+  }
+  .insta-subtitle {
+    font-size: 13px;
+  }
   .insta-image {
     height: 180px;
   }
 }
 
 @media (max-width: 480px) {
+  .insta-title {
+    font-size: 18px;
+  }
+  .insta-subtitle {
+    font-size: 12px;
+  }
   .insta-image {
     height: 150px;
   }
+}
+
+/* Slick dots styling */
+.slick-dots {
+  bottom: -25px;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #ccc;
+}
+
+.slick-dots li.slick-active button:before {
+  color: black;
 }
