@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+# Faizan-Tariq-slash-cart-assignment
+This project is a frontend-only implementation of the provided design, focusing on UI/UX accuracy. It replicates the given Figma design and prototype, matching typography, spacing, colors, and layout while ensuring responsiveness.
+>>>>>>> 76dcad7d74c6e2db659a008c127b07529c9ddf38
