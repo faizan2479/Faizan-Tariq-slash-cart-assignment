@@ -1,0 +1,42 @@
+.insta-container {
+  width: 90%;
+  margin: auto;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.insta-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.insta-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.insta-card {
+  padding: 5px;
+}
+
+.insta-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Slick dots styling */
+.slick-dots {
+  bottom: -25px;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #ccc;
+}
+
+.slick-dots li.slick-active button:before {
+  color: black;
+}
