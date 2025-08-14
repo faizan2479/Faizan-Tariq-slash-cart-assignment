@@ -1,8 +1,6 @@
 import React, { useState } from "react";
+import { FaUser, FaSearch, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
-import { FaUser, FaSearch, FaShoppingCart } from "react-icons/fa";
-
-// Import images
 import bgn from "../../assests/images/bgn.png";
 import shopcris from "../../assests/images/shopcris.png";
 import coffee from "../../assests/images/cofee.png";
@@ -12,13 +10,18 @@ import searchImg from "../../assests/images/search.png";
 
 function Navbar() {
   const [activeItem, setActiveItem] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleClick = (item, img) => {
     if (activeItem?.name === item) {
-      setActiveItem(null); // Close if already active
+      setActiveItem(null);
     } else {
       setActiveItem({ name: item, image: img });
     }
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
@@ -28,8 +31,13 @@ function Navbar() {
         backgroundImage: `url(${bgn})`,
       }}
     >
+      {/* Mobile Menu Button */}
+      <button className="mobile-menu-button" onClick={toggleMobileMenu}>
+        {mobileMenuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
       {/* Navbar */}
-      <nav className="navbar">
+      <nav className={`navbar ${mobileMenuOpen ? 'mobile-menu-open' : ''}`}>
         {/* Left Menu */}
         <ul className="nav-left">
           <li onClick={() => handleClick("shop", shopcris)}>

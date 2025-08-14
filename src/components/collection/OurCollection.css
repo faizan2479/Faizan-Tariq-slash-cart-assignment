@@ -1,32 +1,51 @@
+/* Base Styles - Mobile First */
 .collection-container {
-  width: 90%;
-  margin: auto;
-  padding: 40px 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
 .collection-title {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 28px;
+  margin-bottom: 30px;
+  font-size: 2rem;
   font-weight: bold;
+  color: #333;
 }
 
 .collection-card {
   text-align: center;
-  padding: 10px;
+  padding: 0 10px;
+  outline: none;
 }
 
-.collection-image {
-  width: 100%;
-  height: 450px; /* Desktop */
-  object-fit: cover;
+.image-container {
+  position: relative;
+  padding-top: 100%; /* 1:1 Aspect Ratio */
+  overflow: hidden;
   border-radius: 10px;
 }
 
+.collection-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.collection-card:hover .collection-image {
+  transform: scale(1.03);
+}
+
 .collection-name {
-  margin-top: 10px;
-  font-size: 18px;
-  font-weight: 500;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
 }
 
 /* Custom Arrows */
@@ -35,53 +54,116 @@
   top: 50%;
   z-index: 2;
   transform: translateY(-50%);
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   font-size: 20px;
-  padding: 10px 15px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   cursor: pointer;
   opacity: 0.8;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  border: none;
 }
 
 .custom-arrow:hover {
   opacity: 1;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .custom-prev {
-  left: -50px;
+  left: -20px;
 }
 
 .custom-next {
-  right: -50px;
+  right: -20px;
 }
 
-/* Tablet and Mobile Adjustments */
-@media (max-width: 1024px) {
-  .collection-image {
-    height: 350px;
+/* Slick Dots Styling */
+.slick-dots {
+  bottom: -40px;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #999;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .collection-title {
+    font-size: 1.8rem;
   }
+  
   .custom-prev {
-    left: -35px;
+    left: -15px;
   }
+  
   .custom-next {
-    right: -35px;
+    right: -15px;
+  }
+}
+
+@media (max-width: 900px) {
+  .collection-container {
+    padding: 30px 15px;
+  }
+  
+  .collection-title {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+  
+  .collection-name {
+    font-size: 1rem;
+  }
+  
+  .custom-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
   }
 }
 
 @media (max-width: 600px) {
-  .collection-image {
-    height: auto; /* Maintain aspect ratio */
+  .collection-container {
+    padding: 25px 10px;
   }
+  
+  .collection-title {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  
+  .collection-card {
+    padding: 0 5px;
+  }
+  
+  .collection-name {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .slick-dots {
+    bottom: -30px;
+  }
+}
+
+/* Touch Devices - Larger tap targets */
+@media (hover: none) {
+  .collection-name {
+    padding: 8px 0;
+  }
+  
   .custom-arrow {
-    font-size: 16px;
-    padding: 6px 10px;
-  }
-  .custom-prev {
-    left: -20px;
-  }
-  .custom-next {
-    right: -20px;
+    width: 45px;
+    height: 45px;
   }
 }

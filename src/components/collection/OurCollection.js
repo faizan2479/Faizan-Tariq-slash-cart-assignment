@@ -39,16 +39,36 @@ const OurCollection = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 600, settings: { slidesToShow: 1 } },
-    ],
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 2,
+          arrows: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          arrows: false,
+          dots: true
+        }
+      }
+    ]
   };
 
   return (
@@ -57,7 +77,9 @@ const OurCollection = () => {
       <Slider {...settings}>
         {collections.map((item, index) => (
           <div key={index} className="collection-card">
-            <img src={item.image} alt={item.title} className="collection-image" />
+            <div className="image-container">
+              <img src={item.image} alt={item.title} className="collection-image" />
+            </div>
             <h3 className="collection-name">{item.title}</h3>
           </div>
         ))}
